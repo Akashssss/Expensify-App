@@ -113,4 +113,29 @@ then open your git hub account > settings > SSH and GPG keys >New SSH key >then 
 
 now we are ready to communicate with git hub securily 
 
-$
+$ ssh -T git@github.com   to check the ssh-connection perfectly etablished if run perfectly then connection is perfect otheerwise not 
+if not worked then use 
+$ ssh -T -p 443 git@ssh.github.com
+
+then ask for fingerprint then you should do yes to that 
+
+to let git know this is where our remote code should live
+git remote add origin  "copied-ssh-link"// this will provide a remote name and remote url ( default name should be origin for main repository and value is copied link )
+
+now our local git repository knows that external remote repository exist 
+
+$git remote 
+>origin
+
+$git remote -v
+>origin  git@github.com:Akashssss/Expensify-App.git (fetch)
+>origin  git@github.com:Akashssss/Expensify-App.git (push)
+
+after the association set up 
+
+now we have to push the code up 
+git push command takes few arguments 
+ -u : flag this creates the association between our local code and upstream git hub repository
+ remote : that we set up called origin
+ branch   we working with master
+ 
