@@ -1,0 +1,9 @@
+peer dependencies in react version 17 are treated as error and warning in version 16 
+while installing some packages from npm 
+
+to resolve that we use : 
+1)run command > npm config set legacy-peer-deps true
+   and again install that package 
+2)at installing that package use
+   this command with --force, or --legacy-peer-deps
+     eg. >npm install react-dates --force
