@@ -76,3 +76,41 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
  git add : add files to staging area 
  git commit : create new commit from the files in a staging area 
  git log : view recent commits 
+ -a  : flag to show files that are also hidden 
+ -t  : flag to tell what type of key want to create 
+ -b  : (bits)flag to tell the size of the key we want to create . in below key generate example 4096  is the size of the key we want to create 
+ rsa : type of key for securily commuicate with git hub 
+        two files are generate one for our mechine (private file ) and other  for third party services like git hub (private)
+ -C  : (comments) for providing the email address inside the comments that gona be associated  with key value pair      
+  
+  command for generate key $ssh-keygen -t rsa -b 4096  -C "akashsingh43457@gmail.com"  
+  then after running the command it ask for the file in which we want to save the key : it is better to stick with the default file 
+   then it ask for passphrase it is not compulsory so we can leave it then hit enter 
+    then it generate the key    
+    then write command to check that ssh key present or not  :
+    $ ls -a  ~/.ssh
+    ./  ../  id_rsa    id_rsa.pub          ( shown )
+
+in which "id_rsa" (treate as a password!) is private file that is present in our mechine and "id_rsa.pub" is public file that we give to the third party services like git hub
+
+ $ eval "$(ssh-agent -s)"  command to check ssh -agent is running or not if not then it start it 
+
+ after that it give "Agent pid some number "
+  eg.  Agent pid 386
+  not we have to add our private ssh key 
+  $ "ssh-add path of the private key"
+
+  eg . 
+  $ ssh-add ~/.ssh/id_rsa
+  Identity added: /c/Users/Akash Singh/.ssh/id_rsa (akashsingh43457@gmail.com)
+
+  then it will ask for passphrase  ,you may leave empty by typing enter
+
+
+$ clip < ~/.ssh/id_rsa.pub 
+using this command we copy the public rsa_key 
+then open your git hub account > settings > SSH and GPG keys >New SSH key >then paste your key value that you copy 
+
+now we are ready to communicate with git hub securily 
+
+$
